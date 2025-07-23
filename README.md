@@ -3,15 +3,30 @@
 If you don't have PHP and Composer installed on your local machine on Linux :
 Run ```/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)" ```
 
+If you don't have a database :
+Run  ```mysql -u root -p```
+Then Run ```CREATE DATABASE projet_commun; ```
 
-- Run the command ```composer global require laravel/installer```
-- Run the command ```npm install && npm run build```
-- Copy and rename .env.example in .env
-- Add your password in the .env file 
-- Call me to have the APP_KEY (line 3 in the .env file)
-- Run the command ```php artisan migrate```
-- Create the database (chose Yes)
-- Run the command ```composer require barryvdh/laravel-debugbar --dev``` in order to use the debugbar
-- To launch the server, run the command ```composer run dev```
+When project is cloned, you need to :
 
-This project is based on the Laravel framework.
+- Copy .env.example in a .env file in root directory with : ```cp .env.example .env```
+
+- Set your DB_USERNAME and DB_PASSWORD in your .env file with your personal logs
+
+At the beginnig of your .env you have to specify the APP_KEY, call me and I'll give it to you
+
+Install all the dependencies with :
+
+```composer install```
+
+Run if you're not using SQLite as database:
+
+```php artisan migrate```
+
+Run :
+
+```npm install && npm run build```
+
+then
+
+```composer run dev```
