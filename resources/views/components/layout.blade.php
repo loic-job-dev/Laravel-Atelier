@@ -23,9 +23,11 @@
     
 @yield("content")
 <footer>
-    <div>
-        <p>&copy; <?php echo date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
-    </div>
+    <footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p>&copy; 2025 L'atelier . Tous droits réservés.</p>
+  </div>
+
     <div>
         <p>
             <a href="/about">À propos</a> | 
