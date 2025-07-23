@@ -12,7 +12,7 @@
                         <h5 class="card-title">Produit 1</h5>
                         <p class="card-text">Description courte du produit 1.</p>
                         <p><strong>Prix : 29,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/1') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                         <h5 class="card-title">Produit 2</h5>
                         <p class="card-text">Description courte du produit 2.</p>
                         <p><strong>Prix : 49,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/2') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <h5 class="card-title">Produit 3</h5>
                         <p class="card-text">Description courte du produit 3.</p>
                         <p><strong>Prix : 19,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/3') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <h5 class="card-title">Produit 4</h5>
                         <p class="card-text">Description courte du produit 4.</p>
                         <p><strong>Prix : 39,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/4') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <h5 class="card-title">Produit 5</h5>
                         <p class="card-text">Description courte du produit 5.</p>
                         <p><strong>Prix : 59,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/5') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                         <h5 class="card-title">Produit 6</h5>
                         <p class="card-text">Description courte du produit 6.</p>
                         <p><strong>Prix : 99,99€</strong></p>
-                        <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                        <a href="{{ url('/product/6') }}" class="btn btn-primary">Ajouter au panier</a>
                     </div>
                 </div>
             </div>
