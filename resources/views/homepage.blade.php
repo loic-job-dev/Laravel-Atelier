@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('/components/layout')
+@section("content")
     <h1> Nouvelles Fragrances</h1>
     <img src="/pictures/exemple.jpg" alt="Parfum douce obsession">
     <h2>Douce Obsession. Eau de Parfum </h2>
@@ -28,5 +22,4 @@
     <img src="/pictures/exemple.jpg" alt="Parfum douce obsession">
     <h2>Soleil d'Ete. Eau de Parfum</h2>
     <button>AJOUTER AU PANIER</button>
-</body>
-</html>
+@endsection
