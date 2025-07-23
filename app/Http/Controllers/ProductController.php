@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
 
     public function show(int $id): View {
-        return view('product', ['id' => $id]);
+        return view('/product/product-details', ['id' => $id]);
     }
 
 }

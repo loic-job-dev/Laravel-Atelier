@@ -1,11 +1,5 @@
-<div>@include('header')</div>
-
-<html>
-
-<body>
-    <!-- Include the header here-->
-
-    <main>
+@extends("/components/layout")
+@section("content")
         <h1>Fiche du produit {{ $id }}</h1>
         <h3>Boutique / Eau de parfum / Douce obsession</h3>
 
@@ -54,8 +48,4 @@ Un parfum-caresse, à la fois raffiné et irrésistible, pour celles et ceux qui
 
         <h3>INGREDIENTS</h3>
         <p>ALCOHOL DENAT., FRAGRANCE (PARFUM), WATER (AQUA), TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, VANILLIN, ETHYLHEXYL METHOXYCINNAMATE, BUTYL METHOXYDIBENZOYLMETHANE, ETHYLHEXYL SALICYLATE, POGOSTEMON CABLIN OIL, BHT, BETA-CARYOPHYLLENE, MYROXYLON PEREIRAE OIL/EXTRACT, PINENE, BENZALDEHYDE, FD&C RED Nº. 4 (CI 14700), EXT. D&C VIOLET Nº. 2 (CI 60730), LINALOOL, COUMARIN, ISOEUGENOL, BENZYL BENZOATE, BENZYL CINNAMATE, LIMONENE</p>
-    </main>
-    <!-- Inlude the footer here-->
-</body>
-
-</html>
+@endsection
