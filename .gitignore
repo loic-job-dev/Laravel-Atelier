@@ -30,8 +30,6 @@
 /vendor
 
 .env.backup
-storage/framework/
-storage/logs/
 .env.testing
 docker-compose.override.yml
 
