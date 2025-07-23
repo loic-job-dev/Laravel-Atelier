@@ -2,9 +2,9 @@
     <head>
         <meta charset="utf-8">
         <title>L'atelier. Votre boutique de parfums de luxe.</title>
-        
+        <link rel="stylesheet" href="./ressources/css/app.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <link rel="stylesheet" href="/style.css" />
+        <script src="./ressources/css/app.js"></script>
     </head>
     <body>
         
@@ -15,6 +15,7 @@
             </div>
             <h2>Marques</h2>
             <a href="{{ url('/catalog') }}">Parfums</a>
+            <h2>Parfums</h2>
             <h2>Voyage olfactif</h2>
             <img src="/pictures/menu_logo.svg" alt="logo menu">
             <img src="/pictures/profile_logo.svg" alt="logo profile">
@@ -28,6 +29,9 @@
     <p>&copy; 2025 L'atelier . Tous droits réservés.</p>
   </div>
 
+    <div>
+        <p>&copy; <?php echo date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
+    </div>
     <div>
         <p>
             <a href="/about">À propos</a> | 
