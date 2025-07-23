@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class ProductController extends Controller
 {
 
-    public function showProduct(int $id): View {
+    public function show(int $id): View {
         return view('product', ['id' => $id]);
     }
 
