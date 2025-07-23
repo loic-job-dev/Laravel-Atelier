@@ -1,3 +1,5 @@
+<div>@include('header')</div>
+
 <html>
 
 <body>
