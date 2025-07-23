@@ -22,7 +22,7 @@
             <!-- Carte Produit 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 1">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 1">
                     <div class="card-body">
                         <h5 class="card-title">Produit 1</h5>
                         <p class="card-text">Description courte du produit 1.</p>
@@ -35,7 +35,7 @@
             <!-- Carte Produit 2 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 2">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 2">
                     <div class="card-body">
                         <h5 class="card-title">Produit 2</h5>
                         <p class="card-text">Description courte du produit 2.</p>
@@ -48,7 +48,7 @@
             <!-- Carte Produit 3 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 3">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 3">
                     <div class="card-body">
                         <h5 class="card-title">Produit 3</h5>
                         <p class="card-text">Description courte du produit 3.</p>
@@ -61,7 +61,7 @@
             <!-- Carte Produit 4 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 4">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 4">
                     <div class="card-body">
                         <h5 class="card-title">Produit 4</h5>
                         <p class="card-text">Description courte du produit 4.</p>
@@ -74,7 +74,7 @@
             <!-- Carte Produit 5 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 5">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 5">
                     <div class="card-body">
                         <h5 class="card-title">Produit 5</h5>
                         <p class="card-text">Description courte du produit 5.</p>
@@ -87,7 +87,7 @@
             <!-- Carte Produit 6 -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Produit 6">
+                    <img src="/pictures/exemple.jpg" class="card-img-top" alt="Produit 6">
                     <div class="card-body">
                         <h5 class="card-title">Produit 6</h5>
                         <p class="card-text">Description courte du produit 6.</p>
