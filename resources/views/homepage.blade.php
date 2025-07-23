@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @extends('/components/layout')
 @section("content")
 
@@ -60,6 +61,10 @@
     <title>Document</title>
 </head>
 <body>
+=======
+@extends('/components/layout')
+@section("content")
+>>>>>>> 60e40f0 (Homepage)
     <h1> Nouvelles Fragrances</h1>
     <img src="/pictures/exemple.jpg" alt="Parfum douce obsession">
     <h2>Douce Obsession. Eau de Parfum </h2>
@@ -82,6 +87,10 @@
     <img src="/pictures/exemple.jpg" alt="Parfum douce obsession">
     <h2>Soleil d'Ete. Eau de Parfum</h2>
     <button>AJOUTER AU PANIER</button>
+<<<<<<< HEAD
 </body>
 </html>
 >>>>>>> 561634d (rebase sinan)
+=======
+@endsection
+>>>>>>> 60e40f0 (Homepage)
