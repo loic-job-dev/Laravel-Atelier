@@ -14,3 +14,6 @@ Route::get('/product/{id}', [ProductController::class, 'showProduct']);
 
 ;
 Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/' , function () {
+    return view('homepage');
+});
