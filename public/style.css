@@ -1,0 +1,27 @@
+* {
+    margin : 0;
+}
+
+body {
+    background-color: rgba(255, 252, 235, 1);
+}
+
+header, footer {
+    background-color: 390050;
+}
+header h1{
+    color: rgba(255, 231, 135, 1);
+}
+header h2{
+    color: rgba(255, 231, 135, 1);
+}
+footer p {
+    color: rgba(255, 231, 135, 1);
+}
+footer a {
+    color: rgba(255, 231, 135, 1);
+}
+
+h1, h2, h3 {
+    color: 390050;
+}
