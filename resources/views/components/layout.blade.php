@@ -13,7 +13,7 @@
                 <h1>L'Atelier.</h1>
             </div>
             <h2>Marques</h2>
-            <h2>Parfums</h2>
+            <a href="{{ url('/catalog') }}">Parfums</a>
             <h2>Voyage olfactif</h2>
             <img src="/pictures/menu_logo.svg" alt="logo menu">
             <img src="/pictures/profile_logo.svg" alt="logo profile">
