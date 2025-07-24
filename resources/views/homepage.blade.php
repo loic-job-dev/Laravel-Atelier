@@ -52,6 +52,7 @@
     
 
 @endsection
+<<<<<<< HEAD
 =======
 <!DOCTYPE html>
 <html lang="en">
@@ -94,3 +95,5 @@
 =======
 @endsection
 >>>>>>> 60e40f0 (Homepage)
+=======
+>>>>>>> dc9747d (Liens mise à jour)
