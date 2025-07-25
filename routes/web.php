@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\BackofficeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,10 @@ Route::get('/' , function () {
 //Routes for basket
 
 Route::get('/basket', [BasketController::class, 'show']);
+
+
+// Routes pour le backoffice
+
+Route::get('/backoffice', [BackofficeController::class, 'index']);
+
+Route::get('/backoffice/product', [BackofficeController::class, 'product']);
