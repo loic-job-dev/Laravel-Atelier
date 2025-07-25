@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 @extends('/components/layout')
 @section("content")
 
@@ -52,8 +50,6 @@
     
 
 @endsection
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +61,6 @@
 =======
 @extends('/components/layout')
 @section("content")
->>>>>>> 60e40f0 (Homepage)
     <h1> Nouvelles Fragrances</h1>
     <img src="/pictures/exemple.jpg" alt="Parfum douce obsession">
     <h2>Douce Obsession. Eau de Parfum </h2>
