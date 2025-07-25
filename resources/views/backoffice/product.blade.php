@@ -1,10 +1,9 @@
 @extends('/components/layout-backoffice')
 
 @section('content')
-<h1 class="mb-4">Bienvenue dans le Backoffice</h1>
-<p>Page de gestion des produits</p>
+<h2 class="mb-4">Page de gestion des produits</h2>
 
-<h1 class="mb-4">Liste des Parfums</h1>
+<h3 class="mb-4">Liste des Parfums</h1>
 
 <div class="table-responsive">
     <table class="table table-bordered table-hover align-middle">
