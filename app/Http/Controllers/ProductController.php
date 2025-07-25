@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 
+
 class ProductController extends Controller {
 
 
@@ -13,6 +14,7 @@ class ProductController extends Controller {
         return number_format($price / 100, 2, ',', ' ') . " €";
     }
     public function index()
+
     {
         $products= DB::select('select * from products');
 
@@ -20,6 +22,7 @@ class ProductController extends Controller {
     }
     
     public function show(int $id): View {
+
 
         $products = DB::select('select * from products where id = ' . $id);
         $category = DB::select('select name from categories where id =' . $products[0]->category_id);
@@ -31,3 +34,4 @@ class ProductController extends Controller {
                                                             ]);
     }
 }
+

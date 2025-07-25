@@ -15,6 +15,7 @@
             </div>
             <h2>Marques</h2>
             <a href="{{ url('/catalog') }}">Parfums</a>
+            <h2>Parfums</h2>
             <h2>Voyage olfactif</h2>
             <img src="/pictures/menu_logo.svg" alt="logo menu">
             <img src="/pictures/profile_logo.svg" alt="logo profile">
@@ -28,6 +29,9 @@
     <p>&copy; 2025 L'atelier . Tous droits réservés.</p>
   </div>
 
+    <div>
+        <p>&copy; <?php echo date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
+    </div>
     <div>
         <p>
             <a href="/about">À propos</a> | 
