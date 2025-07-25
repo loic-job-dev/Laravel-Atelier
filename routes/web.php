@@ -32,3 +32,5 @@ Route::get('/basket', [BasketController::class, 'show']);
 Route::get('/backoffice', [BackofficeController::class, 'index']);
 
 Route::get('/backoffice/product', [BackofficeController::class, 'product']);
+
+Route::get('/backoffice/product/{id}', [BackofficeController::class, 'detail']);
