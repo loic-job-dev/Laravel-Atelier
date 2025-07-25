@@ -16,10 +16,13 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/catalog', [ProductController::class, 'index']);
 
 
+// routes/web.php
+Route::get('/', [App\Http\Controllers\HomePage::class, 'index']);
 
-Route::get('/' , function () {
-    return view('homepage');
-});
+
+// Route::get('/' , function () {
+//     return view('homepage');
+// });
 
 
 //Routes for basket
