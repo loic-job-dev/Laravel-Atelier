@@ -6,33 +6,31 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Category;
 
 
 class ProductController extends Controller
 {
 
-    public function index()
+public function index(Request $request)
+{
+    $sort = $request->query('sortby'); // ex: ?sortby=price_large
+    $query = Product::query();
 
-    {
-        $products = DB::select('select * from products');
-
-        return view('/product/catalog', ['products' => $products]);
+    if (in_array($sort, ['name', 'price_large'])) {
+        $query->orderBy($sort);
     }
+
+    $products = $query->get();
+
+    return view('/product/catalog', compact('products'));
+}
 
     public function show(int $id): View
     {
-        $index = 1;
-        foreach (Product::all() as $product) {
-
-
-            echo($product->name);
-
-            $index++;
-        }
-
-
-        $products = DB::select('select * from products where id = ' . $id);
-        $category = DB::select('select name from categories where id =' . $products[0]->category_id);
+        // $products = DB::select('select * from products where id = ' . $id);
+        $products = Product::where('id', $id)->get();
+        $category = Category::select('name')->where('id', $products[0]->category_id)->get();
 
         return view('/product/product-details', [
             'id' => $id,
