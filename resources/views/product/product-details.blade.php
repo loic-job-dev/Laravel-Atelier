@@ -2,7 +2,7 @@
 @section("content")
 <h1>Fiche du produit {{ $id }}</h1>
 
-<h3>Boutique / {{ $category -> name }} / {{ $product -> name }}</h3>
+<h3>Boutique / {{ $product -> category -> name }} / {{ $product -> name }}</h3>
 <div class="container-fluid">
     <div class="row">
         <div class="col-7 ml-5">
@@ -15,7 +15,7 @@
     </div>
 </div>
         <h1 class="d-inline">{{ $product -> name }} - </h1>
-        <h2 class="d-inline"><em>{{ $category -> name }}</em></h2>
+        <h2 class="d-inline"><em>{{ $product -> category -> name }}</em></h2>
 <h2>{{ $price }} €</h3>
 
 <h3>SIZE</h2>

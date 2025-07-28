@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
 
+    public $timestamps = false;
+    protected $table = 'categories';
+
+    protected $fillable = ['name'];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
