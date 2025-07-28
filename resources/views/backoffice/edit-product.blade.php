@@ -76,6 +76,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-        <a href="" class="btn btn-secondary ms-2">Annuler</a>
+        <a href="{{ route('backoffice.index') }}" class="btn btn-secondary ms-2">Annuler</a>
     </form>
 @endsection

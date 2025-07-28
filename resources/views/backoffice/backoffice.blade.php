@@ -3,5 +3,11 @@
 @section('content')
     <h1 class="mb-4">Bienvenue dans le Backoffice</h1>
     <p>Page d'accueil de l'administration.</p>
-    <p>{{ $success }}</p>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+     <a href={{url ('/backoffice/product') }} class="btn btn-primary">Liste des produits</a>
+
 @endsection

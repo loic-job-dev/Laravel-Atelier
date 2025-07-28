@@ -35,6 +35,6 @@ Route::get('/backoffice', [BackofficeController::class, 'index'])->name('backoff
 
 Route::get('/backoffice/product', [BackofficeController::class, 'product']);
 
-Route::get('/backoffice/product/{id}', [BackofficeController::class, 'detail']);
+Route::get('/backoffice/product/{id}', [BackofficeController::class, 'detail'])->name('product.show');
 
-Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'edit']);
+Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'edit'])->name('product.edit');

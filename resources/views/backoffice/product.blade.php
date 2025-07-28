@@ -3,7 +3,7 @@
 @section('content')
 <h2 class="mb-4">Page de gestion des produits</h2>
 
-<h3 class="mb-4">Liste des Parfums</h1>
+<h3 class="mb-4">Liste des Parfums</h3>
 
 <div class="table-responsive">
     <table class="table table-bordered table-hover align-middle">
@@ -27,7 +27,7 @@
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>{{ $product->id }}</td>
+                <td>{{ $product->id }} <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Editer</a></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price_large }}</td>
                 <td>{{ $product->price_small }}</td>
