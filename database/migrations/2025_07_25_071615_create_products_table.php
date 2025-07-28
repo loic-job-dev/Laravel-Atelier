@@ -13,8 +13,34 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->integer('price_small');
+            $table->integer('price_large');
+            $table->string('picture_main');
+            $table->string('picture_bis');
+            $table->string('description');
+            $table->integer('quantity_stock');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->string('head_notes');
+            $table->string('head_notes_picture');
+            $table->string('heart_notes');
+            $table->string('heart_notes_picture');
+            $table->string('deep_notes');
+            $table->string('deep_notes_picture');
+            $table->string('intensity');
+            $table->string('track');
+            $table->string('history');
+            $table->string('ingredients');
         });
+
+
+        //Autre syntaxte pour les clés étrangères :
+
+        // Schema::table('products', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('category_id');
+ 
+        //     $table->foreign('category_id')->references('id')->on('category');
+        // });
     }
 
     /**

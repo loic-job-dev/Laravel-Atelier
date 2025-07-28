@@ -26,12 +26,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $product->id }}<a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Editer</a>
+                    <td><div class="col"><div class="text-center">{{ $product->id }}</div>  <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary m-3 d-flex align-item-center">Editer</a>
                         <form action="{{ route('product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr ?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
+                            <button type="submit" class="btn btn-danger d-flex align-item-center m-3">Supprimer</button>
+                        </form></div>
                     </td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price_large }}</td>

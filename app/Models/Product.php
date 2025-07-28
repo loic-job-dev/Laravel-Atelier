@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -23,4 +24,18 @@ class Product extends Model
                             'track', 
                             'history', 
                             'ingredients'];
+
+        public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+    //Utilisation dans le code :
+    // $product = Product::find(1);
+    // echo $product->category->name;
+
+    // $category = Category::find(1);
+    // foreach ($category->products as $product) {
+    //     echo $product->name;
+    // }
+
 }

@@ -27,11 +27,11 @@
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>{{ $product->id }} <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Editer</a>
+                <td>{{ $product->id }} <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary m-3 d-flex align-item-center">Editer</a>
                     <form action="{{ route('product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr ?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-danger d-flex align-item-center m-3">Supprimer</button>
                     </form>
                 </td>
                 <td>{{ $product->name }}</td>
