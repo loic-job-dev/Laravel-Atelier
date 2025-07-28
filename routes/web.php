@@ -18,6 +18,10 @@ Route::get('/catalog', [ProductController::class, 'index']);
 
 Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
 
+Route::post('/backoffice/product', [ProductController::class, 'create'])->name('product.create');
+
+Route::delete('/backoffice/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
 
 Route::get('/' , function () {
     return view('homepage');
@@ -38,3 +42,5 @@ Route::get('/backoffice/product', [BackofficeController::class, 'product']);
 Route::get('/backoffice/product/{id}', [BackofficeController::class, 'detail'])->name('product.show');
 
 Route::get('/backoffice/product/{id}/edit', [BackofficeController::class, 'edit'])->name('product.edit');
+
+Route::get('/backoffice/create', [BackofficeController::class, 'create']);

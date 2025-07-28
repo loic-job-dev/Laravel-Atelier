@@ -50,4 +50,9 @@ class BackofficeController extends Controller
             'category' => $category[0],
         ]);
     }
+
+        public function create()
+    { 
+            return view('/backoffice/create');
+    }
 }

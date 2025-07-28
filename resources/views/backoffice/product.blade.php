@@ -27,7 +27,13 @@
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>{{ $product->id }} <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Editer</a></td>
+                <td>{{ $product->id }} <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Editer</a>
+                    <form action="{{ route('product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr ?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price_large }}</td>
                 <td>{{ $product->price_small }}</td>

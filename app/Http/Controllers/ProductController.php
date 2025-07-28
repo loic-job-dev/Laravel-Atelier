@@ -67,4 +67,38 @@ class ProductController extends Controller
 
         return redirect()->route('backoffice.index')->with('success', 'Produit mis à jour avec succès.');
     }
+
+    public function create(Request $request) {
+        $data = $request->all();
+
+                //validation optionnelle
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price_large' => 'required|numeric',
+            'price_small' => 'required|numeric',
+            'description' => 'required|string',
+            'quantity_stock'  => 'required|numeric',
+            'category_id'  => 'required|numeric',
+            'head_notes' => 'required|string|max:255',
+            'heart_notes' => 'required|string|max:255',
+            'deep_notes' => 'required|string|max:255',
+            'intensity' => 'required|string|max:255',
+            'track' => 'required|string|max:255',
+            'history' => 'required|string',
+            'ingredients' => 'required|string',
+            //autres règles ici si nécessaire
+        ]);
+
+         $product = Product::create($data);
+         return redirect()->route('backoffice.index')->with('success', 'Produit créé avec succès.');
+    }
+
+    public function delete($id) {
+        
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->route('backoffice.index')->with('success', 'Produit supprimé avec succès.');
+    }
 }
