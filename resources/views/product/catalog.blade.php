@@ -2,7 +2,7 @@
 
 @section("content")
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Catalogue de Produits</h1>
+    <h1 class="text-center mb-4">Catalogue de Produ+-its</h1>
 
     <div class="row">
 

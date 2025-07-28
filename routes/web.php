@@ -13,7 +13,12 @@ Route::get('/', function () {
 
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
-Route::get('/catalog', [ProductController::class, 'index']);
+Route::get('/catalog', [ProductController::class, 'display'])
+     ->name('products.index');
+
+Route::get('/products', [ProductController::class, 'display'])
+     ->name('products.display');
+
 
 
 // routes/web.php
@@ -25,6 +30,6 @@ Route::get('/', [App\Http\Controllers\HomePage::class, 'index']);
 // });
 
 
-//Routes for basket
+
 
 Route::get('/basket', [BasketController::class, 'show']);
