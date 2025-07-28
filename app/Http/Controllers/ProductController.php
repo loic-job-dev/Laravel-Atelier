@@ -39,4 +39,32 @@ class ProductController extends Controller
             'category' => $category[0],
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        //validation optionnelle
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price_large' => 'required|numeric',
+            'price_small' => 'required|numeric',
+            'description' => 'required|string',
+            'quantity_stock'  => 'required|numeric',
+            'category_id'  => 'required|numeric',
+            'head_notes' => 'required|string|max:255',
+            'heart_notes' => 'required|string|max:255',
+            'deep_notes' => 'required|string|max:255',
+            'intensity' => 'required|string|max:255',
+            'track' => 'required|string|max:255',
+            'history' => 'required|string',
+            'ingredients' => 'required|string',
+            //autres règles ici si nécessaire
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->update($data);
+
+        return redirect()->route('backoffice.index')->with('success', 'Produit mis à jour avec succès.');
+    }
 }

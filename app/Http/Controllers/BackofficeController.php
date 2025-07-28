@@ -37,4 +37,17 @@ class BackofficeController extends Controller
             'category' => $category[0],
         ]);
     }
+
+        public function edit(int $id) 
+    {
+        $products = Product::where('id', $id)->get();
+        $category = Category::select('name')->where('id', $products[0]->category_id)->get();
+
+        return view('/backoffice/edit-product', [
+            'id' => $id,
+            'price' => number_format($products[0]->price_large / 100, 2, ',', ' '),
+            'product' => $products[0],
+            'category' => $category[0],
+        ]);
+    }
 }
