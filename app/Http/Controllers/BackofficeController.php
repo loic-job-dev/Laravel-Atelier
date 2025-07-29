@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BackofficeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        //
+        $products = Product::all();
+        return view ('backoffice.products' , compact('products'));
     }
 
     /**
@@ -35,7 +35,10 @@ class BackofficeController extends Controller
      */
     public function show(string $id)
     {
-        //
+    
+        $product = Product::findOrFail($id);
+        return view('backoffice.show', compact('product'));
+
     }
 
     /**
@@ -43,15 +46,25 @@ class BackofficeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('backoffice.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price_small' => 'required|numeric',
+            'price_large' => 'required|numeric',
+            'description' => 'nullable|string',
+            'quantity_stock' => 'required|numeric',
+        ]);
+        $product = Product::findOrFail($id);
+        $product->update($validated);
+        return redirect()->route('backoffice.products.index', $id)->with('success', 'Produit modifié.');
     }
 
     /**
