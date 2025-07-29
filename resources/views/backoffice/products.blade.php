@@ -15,6 +15,9 @@
             <td>
                 <a href="{{ route('backoffice.products.show', $product->id) }}" class="btn btn-info btn-sm">Détails</a>
             </td>
+            <td>
+                <form action="" method="post"></form>
+            </td>
         </tr>
     @endforeach
     </tbody>
