@@ -23,7 +23,7 @@
 <form method="POST" action="{{ route('cart.add', ['id' => $product->id]) }}">
     @csrf
     <input type="hidden" name="product_id" value="{{ $product->id }}">
-    <button class="btn btn-outline-light px-4 py-2" style="background-color: #390050;" type="submit">
+    <button class="btn btn-custom px-4 py-2" type="submit">
         Ajouter au panier
     </button>
         @if (session('success'))
