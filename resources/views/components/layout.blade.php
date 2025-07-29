@@ -30,9 +30,9 @@
             <!-- Icônes -->
             <div class="d-flex align-items-center gap-3">
                 <img src="/pictures/menu_logo.svg" alt="logo menu" width="24" height="24">
-                <img src="/pictures/profile_logo.svg" alt="logo profile" width="24" height="24">
+                <img src="/pictures/profile_logo.svg" alt="logo profile" width="34" height="34">
                 <a href="{{ url('/cart') }}">
-                    <img src="/pictures/cart_logo.svg" alt="logo cart" width="24" height="24">
+                    <img src="/pictures/cart_logo.svg" alt="logo cart" width="34" height="34">
                 </a>
             </div>
         </div>

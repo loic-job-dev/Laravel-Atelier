@@ -1,7 +1,6 @@
 @extends("/components/layout")
 @section("content")
 <div class="container my-5">
-    <h1 class="mb-3">Fiche du produit {{ $id }}</h1>
     <h5 class="text-muted">Boutique / {{ $product->category->name }} / {{ $product->name }}</h5>
 
     <div class="row my-4">

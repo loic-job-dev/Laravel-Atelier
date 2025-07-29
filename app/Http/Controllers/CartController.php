@@ -55,4 +55,13 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Produit supprimé avec succès.');
     }
+
+    public function informations() {
+        $products = Product::all()->keyBy('id');
+
+        $cart = session()->get('cart', []);
+
+        
+        return view('/basket/informations', compact('cart', 'products'));
+    }
 }
