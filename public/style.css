@@ -7,7 +7,7 @@ body {
 }
 
 header, footer {
-    background-color: 390050;
+    background-color: #390050;
 }
 header img {
     display: inline-block;
@@ -34,7 +34,7 @@ footer a {
 }
 
 h1, h2, h3 {
-    color: 390050;
+    color: #390050;
 }
 
 
@@ -47,6 +47,20 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+table.table-custom > thead > tr > th {
+    background-color: #390050 !important;
+    color: rgba(255, 231, 135, 1) !important;
+    border-color: #390050 !important;
+}
+
+.table-custom tbody td {
+    background-color: #fffaf0;
+    color: #390050;
+    font-weight: 500;
+    padding: 1rem;
 }
 
 

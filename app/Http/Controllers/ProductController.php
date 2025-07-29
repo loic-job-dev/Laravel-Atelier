@@ -40,16 +40,14 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-
         //validation optionnelle
         $request->validate([
             'name' => 'required|string|max:255',
-            'price_large' => 'required|numeric',
-            'price_small' => 'required|numeric',
+            'price_large' => 'required|numeric|min:1',
+            'price_small' => 'required|numeric|min:1',
             'description' => 'required|string',
-            'quantity_stock'  => 'required|numeric',
-            'category_id'  => 'required|numeric',
+            'quantity_stock'  => 'required|numeric|min:0',
+            'category_id'  => 'required|numeric|min:1|max:2',
             'head_notes' => 'required|string|max:255',
             'heart_notes' => 'required|string|max:255',
             'deep_notes' => 'required|string|max:255',
@@ -59,6 +57,9 @@ class ProductController extends Controller
             'ingredients' => 'required|string',
             //autres règles ici si nécessaire
         ]);
+
+        $data = $request->all();
+
 
         $product = Product::findOrFail($id);
         $product->update($data);
@@ -72,11 +73,11 @@ class ProductController extends Controller
                 //validation optionnelle
         $request->validate([
             'name' => 'required|string|max:255',
-            'price_large' => 'required|numeric',
-            'price_small' => 'required|numeric',
+            'price_large' => 'required|numeric|min:1',
+            'price_small' => 'required|numeric|min:1',
             'description' => 'required|string',
-            'quantity_stock'  => 'required|numeric',
-            'category_id'  => 'required|numeric',
+            'quantity_stock'  => 'required|numeric|min:0',
+            'category_id'  => 'required|numeric|min:1|max:2',
             'head_notes' => 'required|string|max:255',
             'heart_notes' => 'required|string|max:255',
             'deep_notes' => 'required|string|max:255',

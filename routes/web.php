@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\BackofficeController;
 
 use Illuminate\Support\Facades\Route;
@@ -30,7 +30,11 @@ Route::get('/' , function () {
 
 //Routes for basket
 
-Route::get('/basket', [BasketController::class, 'show']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::post('/product/{id}',[CartController::class, 'add'])->name('cart.add');
+
+Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
 
 
 // Routes pour le backoffice

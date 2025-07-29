@@ -20,7 +20,23 @@
         <h3 class="mt-2">{{ $price }} €</h3>
     </div>
 
-    <button class="btn btn-outline-light px-4 py-2" style="background-color: #390050;">AJOUTER AU PANIER</button>
+<form method="POST" action="{{ route('cart.add', ['id' => $product->id]) }}">
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <button class="btn btn-outline-light px-4 py-2" style="background-color: #390050;" type="submit">
+        Ajouter au panier
+    </button>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-warning">
+                {{ session('error') }}
+            </div>
+        @endif
+</form>
 
     <div class="mt-4">
         <p>{{ $product->description }}</p>

@@ -25,6 +25,10 @@ class Product extends Model
                             'track', 
                             'history', 
                             'ingredients'];
+    protected $casts = [
+        'price_large' => 'integer',
+        'price_small' => 'integer',
+    ];
 
         public function category(): BelongsTo
     {
