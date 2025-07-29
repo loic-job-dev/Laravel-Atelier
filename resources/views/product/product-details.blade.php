@@ -6,11 +6,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-7 ml-5">
-            <img src="/pictures/exemple.jpg" class="img-fluid" alt="picture exemple" />
+            <img src="{{ asset('storage/' . $product->picture_main) }}" class="img-fluid" alt="main pucture" />
         </div>
         <div class="col-3">
-            <img src="/pictures/exemple.jpg" class="img-fluid mb-5" alt="picture exemple" />
-            <img src="/pictures/exemple.jpg" class="img-fluid" alt="picture exemple" />
+            <img src="{{ asset('storage/' . $product->picture_main) }}" class="img-fluid mb-5" alt="main picture" />
+            <img src="{{ asset('storage/' . $product->picture_bis) }}" class="img-fluid" alt="picture bis" />
         </div>
     </div>
 </div>

@@ -30,3 +30,14 @@ Run :
 then
 
 ```composer run dev```
+
+
+
+To use the database created with the project :
+
+- Change the name of the DB in your .env file (so the one you've created will be safe)
+
+- Run ```php artisan migrate:fresh```
+
+- Run ```php artisan db:seed```
+

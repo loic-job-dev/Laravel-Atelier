@@ -16,21 +16,21 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price_small');
             $table->integer('price_large');
-            $table->string('picture_main');
-            $table->string('picture_bis');
-            $table->string('description');
+            $table->text('picture_main');
+            $table->text('picture_bis');
+            $table->text('description');
             $table->integer('quantity_stock');
             $table->foreignId('category_id')->constrained('categories');
             $table->string('head_notes');
-            $table->string('head_notes_picture');
+            $table->text('head_notes_picture');
             $table->string('heart_notes');
-            $table->string('heart_notes_picture');
+            $table->text('heart_notes_picture');
             $table->string('deep_notes');
-            $table->string('deep_notes_picture');
+            $table->text('deep_notes_picture');
             $table->string('intensity');
             $table->string('track');
-            $table->string('history');
-            $table->string('ingredients');
+            $table->text('history');
+            $table->text('ingredients');
         });
 
 
