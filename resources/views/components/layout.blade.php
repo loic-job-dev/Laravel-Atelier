@@ -38,7 +38,10 @@
         </div>
     </header>
 
-    @yield("content")
+    <main class="flex-grow-1">
+        @yield("content")
+    </main>
+
     <footer>
         <footer class="bg-dark text-white text-center py-4">
 
