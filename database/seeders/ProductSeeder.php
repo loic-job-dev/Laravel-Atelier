@@ -1,0 +1,99 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('products')->insert([
+            [
+                'name' => 'Douce Obsession.',
+                'price_small' => 10999,
+                'price_large' => 19999,
+                'picture_main' => 'pictures/parfum/obsession_main.webp',
+                'picture_bis' => 'pictures/parfum/obsession_bis.webp',
+                'description' => 'Succombez à l’envoûtement d’un parfum gourmand et voluptueux. Douce Obsession s’ouvre sur la tendresse d’une amande délicatement sucrée, évoquant un instant de pure douceur. Au cœur, la vanille déploie toute sa chaleur crémeuse, enveloppant les sens d’une sensualité réconfortante. En fond, le benjoin révèle des accents balsamiques et ambrés, laissant un sillage profond et addictif. Un parfum-caresse, à la fois raffiné et irrésistible, pour celles et ceux qui osent révéler leur côté le plus captivant.',
+                'quantity_stock' => 198,
+                'category_id' => 1, 
+                'head_notes' => 'Amande',
+                'head_notes_picture' => 'pictures/notes/amande.jpg',
+                'heart_notes' => 'Vanille',
+                'heart_notes_picture' => 'pictures/notes/vanille.jpg',
+                'deep_notes' => 'Berjoin',
+                'deep_notes_picture' => 'pictures/notes/berjoin.jpg',
+                'intensity' => 'faible',
+                'track' => 'intime',
+                'history' => 'Né du souvenir d’une après-midi ensoleillée, Douce Obsession puise son inspiration dans l’intimité d’un instant sucré. C’est l’évocation d’un dessert raffiné partagé sous les orangers, d’une gourmandise légère mais profondément réconfortante. Ce parfum raconte la quête d’un équilibre parfait entre douceur et caractère, entre tendresse et sensualité. Il s’adresse à celles et ceux qui aiment s’envelopper d’une aura chaleureuse, discrète mais inoubliable.',
+                'ingredients' => 'ALCOHOL DENAT., FRAGRANCE (PARFUM), WATER (AQUA), TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, VANILLIN, ETHYLHEXYL METHOXYCINNAMATE, BUTYL METHOXYDIBENZOYLMETHANE, ETHYLHEXYL SALICYLATE, POGOSTEMON CABLIN OIL, BHT, BETA-CARYOPHYLLENE, MYROXYLON PEREIRAE OIL/EXTRACT, PINENE, BENZALDEHYDE, FD&C RED Nº. 4 (CI 14700), EXT. D&C VIOLET Nº. 2 (CI 60730), LINALOOL, COUMARIN, ISOEUGENOL, BENZYL BENZOATE, BENZYL CINNAMATE, LIMONENE',
+            ],
+            [
+                'name' => 'Nuit d\'orage.',
+                'price_small' => 9999,
+                'price_large' => 17999,
+                'picture_main' => 'pictures/parfum/orage_main.webp',
+                'picture_bis' => 'pictures/parfum/orage_bis.webp',
+                'description' => 'Plongez dans le mystère d’une nuit électrique. Nuit d’orage révèle une fraîcheur saisissante dès les premières notes, où la bergamote et la feuille de violette évoquent l’air vibrant avant l’orage. En cœur, les accents épicés du poivre noir et la profondeur du bois de gaïac intensifient la tension. Le fond, sensuel et enveloppant, mêle cuir fumé et ambre sombre. Un parfum contrasté, entre éclat et obscurité, parfait pour les âmes audacieuses.',
+                'quantity_stock' => 20,
+                'category_id' => 2, 
+                'head_notes' => 'Feuille de violette',
+                'head_notes_picture' => 'pictures/notes/violette.jpg',
+                'heart_notes' => 'Poivre noir',
+                'heart_notes_picture' => 'pictures/notes/poivre.jpg',
+                'deep_notes' => 'Ambre noir',
+                'deep_notes_picture' => 'pictures/notes/ambre.jpg',
+                'intensity' => 'forte',
+                'track' => 'persistante',
+                'history' => 'Inspiré par une nuit d’été orageuse, ce parfum exprime la tension électrique dans l’air, l’énergie brute et les émotions qui montent avant l’éclat du tonnerre. Il incarne le frisson de l’imprévisible.',
+                'ingredients' => 'ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), LINALOOL, LIMONENE, COUMARIN, ISOEUGENOL, AMYL CINNAMAL, EVERNYL, BENZYL ALCOHOL, CITRAL, CINNAMYL ALCOHOL',
+            ],
+            [
+                'name' => 'Reine d\'ébène.',
+                'price_small' => 11499,
+                'price_large' => 20499,
+                'picture_main' => 'pictures/parfum/ebene_main.webp',
+                'picture_bis' => 'pictures/parfum/ebene_main.webp',
+                'description' => 'Majestueuse et envoûtante, Reine d’ébène évoque la noblesse d’une fragrance boisée orientale. L’ouverture dévoile des notes épicées de cardamome et de prune noire, mystérieuses et élégantes. Le cœur bat au rythme de la rose de Damas, adoucie par le cacao. En fond, l’ébène et le patchouli dessinent un sillage riche et sophistiqué. Une essence affirmée, pour celles et ceux qui règnent en silence.',
+                'quantity_stock' => 15,
+                'category_id' => 2,
+                'head_notes' => 'Cardamome',
+                'head_notes_picture' => 'pictures/notes/cardamome.jpg',
+                'heart_notes' => 'Cacao',
+                'heart_notes_picture' => 'pictures/notes/cacao.jpg',
+                'deep_notes' => 'Bois d’ébène',
+                'deep_notes_picture' => 'pictures/notes/ebene.jpg',
+                'intensity' => 'élevée',
+                'track' => 'opulente',
+                'history' => 'Reine d’ébène rend hommage à la beauté noire, à la force tranquille et à l’élégance racée. Inspirée des contes d’Afrique et des royaumes oubliés, elle incarne la royauté moderne dans toute sa profondeur.',
+                'ingredients' => 'ALCOHOL, PARFUM (FRAGRANCE), AQUA, CINNAMYL ALCOHOL, ISOEUGENOL, COUMARIN, LIMONENE, BHT, LINALOOL, FARNESOL, BENZYL BENZOATE, CITRONELLOL, EUGENOL',
+            ],
+            [
+                'name' => 'Lys d\'argent.',
+                'price_small' => 9499,
+                'price_large' => 16999,
+                'picture_main' => 'pictures/parfum/argent_main.webp',
+                'picture_bis' => 'pictures/parfum/argent_bis.webp',
+                'description' => 'Lys d’argent incarne l’élégance lumineuse d’une floraison délicate. L’attaque fraîche, composée de citron givré et de poire blanche, ouvre un univers cristallin. Le cœur dévoile un bouquet pur de lys et de muguet, subtilement poudré. En fond, le musc blanc et l’ambroxan apportent une caresse soyeuse, presque céleste. C’est le parfum de la pureté assumée, intemporelle et lumineuse.',
+                'quantity_stock' => 25,
+                'category_id' => 1,
+                'head_notes' => 'Citron givré',
+                'head_notes_picture' => 'pictures/notes/citron.jpg',
+                'heart_notes' => 'Lys',
+                'heart_notes_picture' => 'pictures/notes/lys.jpg',
+                'deep_notes' => 'Musc blanc',
+                'deep_notes_picture' => 'pictures/notes/musc_blanc.jpg',
+                'intensity' => 'modérée',
+                'track' => 'aérienne',
+                'history' => 'Imaginé comme une promenade dans un jardin d’hiver éclatant, Lys d’argent célèbre la transparence et la sérénité. Un hommage à la beauté simple, à la lumière pure et au raffinement floral.',
+                'ingredients' => 'ALCOHOL DENAT., PARFUM, AQUA, CITRAL, LINALOOL, HEXYL CINNAMAL, GERANIOL, BENZYL SALICYLATE, ALPHA-ISOMETHYL IONONE, CITRONELLOL, LIMONENE',
+            ],
+        ]);
+    }
+}
+

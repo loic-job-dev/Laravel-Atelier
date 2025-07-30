@@ -1,51 +1,86 @@
 @extends("/components/layout")
 @section("content")
-        <h1>Fiche du produit {{ $id }}</h1>
-        <h3>Boutique / Eau de parfum / Douce obsession</h3>
+<div class="container my-5">
+    <h5 class="text-muted">Boutique / {{ $product->category->name }} / {{ $product->name }}</h5>
 
-        <img src="/pictures/exemple.jpg" alt="picture exemple"/>
-
-        <h1>Douce Obsession. - Eau de Parfum</h1>
-        <h1>199.90 €</h1>
-
-        <h2>SIZE</h2>
-        <div>
-            <button>Small (50cL)</button>
-            <button>Large (100cL)</button>
+    <div class="row my-4">
+        <div class="col-md-7">
+            <img src="{{ asset('storage/' . $product->picture_main) }}" class="img-fluid rounded" alt="main picture">
         </div>
-
-        <button>AJOUTER AU PANIER</button>
-
-        <p>Succombez à l’envoûtement d’un parfum gourmand et voluptueux. Douce Obsession s’ouvre sur la tendresse d’une amande délicatement sucrée, évoquant un instant de pure douceur. Au cœur, la vanille déploie toute sa chaleur crémeuse, enveloppant les sens d’une sensualité réconfortante. En fond, le benjoin révèle des accents balsamiques et ambrés, laissant un sillage profond et addictif.
-Un parfum-caresse, à la fois raffiné et irrésistible, pour celles et ceux qui osent révéler leur côté le plus captivant.</p>
-
-        <hr>
-
-        <h2>Notes olfactives</h2>
-        <div>
-            <h3>Notes de tête</h3>
-            <h3>Amande</h3>
+        <div class="col-md-4 offset-md-1 d-flex flex-column gap-4">
+            <img src="{{ asset('storage/' . $product->picture_main) }}" class="img-fluid rounded" alt="main picture">
+            <img src="{{ asset('storage/' . $product->picture_bis) }}" class="img-fluid rounded" alt="picture bis">
         </div>
-        <div>
-            <h3>Notes de coeur</h3>
-            <h3>Vanille</h3>
+    </div>
+
+    <div class="mb-4">
+        <h2 class="d-inline">{{ $product->name }} - </h2>
+        <h3 class="d-inline"><em>{{ $product->category->name }}</em></h3>
+        <h3 class="mt-2">{{ $price }} €</h3>
+    </div>
+
+<form method="POST" action="{{ route('cart.add', ['id' => $product->id]) }}">
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <button class="btn btn-custom px-4 py-2" type="submit">
+        Ajouter au panier
+    </button>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-warning">
+                {{ session('error') }}
+            </div>
+        @endif
+</form>
+
+    <div class="mt-4">
+        <p>{{ $product->description }}</p>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 class="mb-4 text-center">Notes olfactives</h2>
+
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <h4>Notes de tête</h4>
+            <div class="note-circle mx-auto mb-2">
+                <img src="{{ asset('storage/' . $product->head_notes_picture) }}" alt="note tête" class="img-fluid rounded-circle">
+            </div>
+            <p>{{ $product->head_notes }}</p>
         </div>
-        <div>
-            <h3>Notes de fond</h3>
-            <h3>Benjoin</h3>
+        <div class="col-md-4">
+            <h4>Notes de coeur</h4>
+            <div class="note-circle mx-auto mb-2">
+                <img src="{{ asset('storage/' . $product->heart_notes_picture) }}" alt="note cœur" class="img-fluid rounded-circle">
+            </div>
+            <p>{{ $product->heart_notes }}</p>
         </div>
+        <div class="col-md-4">
+            <h4>Notes de fond</h4>
+            <div class="note-circle mx-auto mb-2">
+                <img src="{{ asset('storage/' . $product->deep_notes_picture) }}" alt="note fond" class="img-fluid rounded-circle">
+            </div>
+            <p>{{ $product->deep_notes }}</p>
+        </div>
+    </div>
 
-        <hr>
+    <hr class="my-5">
 
-        <h2>Profil olfactif</h1>
-        <h3>Intensité</h2>
-        <h3>Sillage intime</h2>
+    <h2 class="mb-3 text-center">Profil olfactif</h2>
+    <p class="text-center"><strong>Intensité :</strong> {{ $product->intensity }}</p>
+    <p class="text-center"><strong>Sillage :</strong> {{ $product->track }}</p>
 
-        <hr>
+    <hr class="my-5">
 
-        <h2>Histoire et ingrédients</h1>
-        <p>Né du souvenir d’une après-midi ensoleillée, Douce Obsession puise son inspiration dans l’intimité d’un instant sucré. C’est l’évocation d’un dessert raffiné partagé sous les orangers, d’une gourmandise légère mais profondément réconfortante. Ce parfum raconte la quête d’un équilibre parfait entre douceur et caractère, entre tendresse et sensualité. Il s’adresse à celles et ceux qui aiment s’envelopper d’une aura chaleureuse, discrète mais inoubliable.</p>
+    <h2 class="mb-3 text-center">Histoire et ingrédients</h2>
+    <p>{{ $product->history }}</p>
 
-        <h3>INGREDIENTS</h3>
-        <p>ALCOHOL DENAT., FRAGRANCE (PARFUM), WATER (AQUA), TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES, VANILLIN, ETHYLHEXYL METHOXYCINNAMATE, BUTYL METHOXYDIBENZOYLMETHANE, ETHYLHEXYL SALICYLATE, POGOSTEMON CABLIN OIL, BHT, BETA-CARYOPHYLLENE, MYROXYLON PEREIRAE OIL/EXTRACT, PINENE, BENZALDEHYDE, FD&C RED Nº. 4 (CI 14700), EXT. D&C VIOLET Nº. 2 (CI 60730), LINALOOL, COUMARIN, ISOEUGENOL, BENZYL BENZOATE, BENZYL CINNAMATE, LIMONENE</p>
+    <h4 class="mt-4 text-center">INGRÉDIENTS</h4>
+    <p>{{ $product->ingredients }}</p>
+</div>
 @endsection
