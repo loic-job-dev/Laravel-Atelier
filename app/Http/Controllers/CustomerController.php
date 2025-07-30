@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Address;
-
+use Illuminate\Support\Facades\Hash;
 class CustomerController extends Controller
 {
     public function create(Request $request)
@@ -40,7 +40,7 @@ class CustomerController extends Controller
         ];
 
         unset($validated['zip_code'], $validated['city'], $validated['address']);
-
+        $validated['password'] = Hash::make($validated['password']);
         $customer = Customer::create($validated);
 
         $customer->adress()->create($addressData);
@@ -51,11 +51,45 @@ class CustomerController extends Controller
 
         session()->put('cart', $oldCart);
 
-        return redirect()->route('cart.summary');
+        return redirect()->route('customer.dashboard');
         // redirect()->route('cart.confirm');
         // redirect()->back()->with('success', 'Client enregistré avec succès.');
         //view ('/basket/confirm', ['customer' => $customer]);
 
+
     }
+    public function login(Request $request)
+    {
+        if (Auth::guard('customer')->check()) {
+            return redirect()->route('customer.dashboard');
+        }
+
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::guard('customer')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('customer.dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'Les identifiants sont incorrects.',
+        ])->onlyInput('email');
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('customer')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('customer.login');
+    }
+    public function dashboard()
+{
+    $customer = Auth::guard('customer')->user();
+    return view('customer.dashboard', compact('customer'));
+}
 
 }

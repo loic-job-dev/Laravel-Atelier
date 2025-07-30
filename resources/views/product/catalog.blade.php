@@ -14,7 +14,7 @@
                     <h5 class="card-title">{{ $product -> name }}</h5>
                     <p class="card-text">{{ $product -> description }}</p>
                     <p><strong>Prix : {{ number_format($product -> price_large / 100, 2, ',', ' ')}} €</strong></p>
-                    <a href="{{ url('/product'). "/" . $product->id}}" class="btn btn-custom">Voir le produit</a>            
+                    <a href="{{ url('product'). "/" . $product->id}}" class="btn btn-custom">Voir le produit</a>            
                 </div>
             </div>
         </div>
