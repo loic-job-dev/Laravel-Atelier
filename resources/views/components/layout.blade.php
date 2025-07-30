@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -35,7 +36,11 @@
                 <img src="/pictures/menu_logo.svg" alt="logo menu" width="24" height="24">
                 <img src="/pictures/profile_logo.svg" alt="logo profile" width="34" height="34">
                 <a href="{{ url('/cart') }}">
+                    @if ((empty($cart) || count($cart) === 0))
                     <img src="/pictures/cart_logo.svg" alt="logo cart" width="34" height="34">
+                    @else
+                    <img src="/pictures/cart_alert_logo.svg" alt="logo cart" width="34" height="34">
+                    @endif
                 </a>
             </div>
         </div>
