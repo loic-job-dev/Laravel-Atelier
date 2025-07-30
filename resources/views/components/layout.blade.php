@@ -36,7 +36,7 @@
                 <img src="/pictures/menu_logo.svg" alt="logo menu" width="24" height="24">
                 <img src="/pictures/profile_logo.svg" alt="logo profile" width="34" height="34">
                 <a href="{{ url('/cart') }}">
-                    @if ((empty($cart) || count($cart) === 0))
+                    @if (empty($cart))
                     <img src="/pictures/cart_logo.svg" alt="logo cart" width="34" height="34">
                     @else
                     <img src="/pictures/cart_alert_logo.svg" alt="logo cart" width="34" height="34">
