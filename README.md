@@ -41,3 +41,5 @@ To use the database created with the project :
 
 - Run ```php artisan db:seed```
 
+- Run ```php artisan storage:link``` to display the pictures
+

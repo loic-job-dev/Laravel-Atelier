@@ -44,6 +44,8 @@ Route::post('/informations', [CustomerController::class, 'create'])->name('custo
 
 Route::get ('/cart/summary', [CartController::class, 'summary'])->name('cart.summary');
 
+Route::get ('/cart/payment', [CartController::class, 'payment'])->name('cart.payment');
+
 
 
 // Routes pour le backoffice

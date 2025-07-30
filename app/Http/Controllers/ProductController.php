@@ -72,9 +72,8 @@ class ProductController extends Controller
     }
 
     public function create(Request $request) {
-        $data = $request->all();
 
-                //validation optionnelle
+        //validation optionnelle
         $request->validate([
             'name' => 'required|string|max:255',
             'price_large' => 'required|numeric|min:1',
@@ -91,6 +90,8 @@ class ProductController extends Controller
             'ingredients' => 'required|string',
             //autres règles ici si nécessaire
         ]);
+
+        $data = $request->all();
 
          $product = Product::create($data);
          return redirect()->route('backoffice.index')->with('success', 'Produit créé avec succès.');

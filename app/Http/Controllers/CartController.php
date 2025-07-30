@@ -8,6 +8,8 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderProduct;
 
 class CartController extends Controller
 {
@@ -80,5 +82,50 @@ class CartController extends Controller
         }
 
         return view('/basket/summary', compact('cart', 'products'));
+    }
+
+    public function payment() 
+    {
+        $products = Product::all()->keyBy('id');
+        $cart = session()->get('cart', []);
+        $customer = auth('customer')->user();
+
+        //On crée un order
+        $order = Order::create([
+            'date_hour' => now(),
+            'shipping_cost' => 1500,
+            'total' => 0,
+            'customer_id' => $customer->id,
+        ]);
+
+        $total = 0;
+
+        foreach ($cart as $productId => $quantity) {
+            //Avoir le nom du produit
+            //echo ( $products[$productId]->name) . ' x ';
+            //Avoir sa quantité commandée
+            //echo ($quantity) . 'unité(s)' ;
+
+            //Création de variables
+            $product = $products[$productId];
+            $subtotal = $product->price_large * $quantity;
+            $total += $subtotal;
+            //On crée un OrderProduct par produit
+            $orderproduct = OrderProduct::create([
+                'order_id' => $order->id,
+                'product_id' => $product->id,
+                'quantity' => $quantity,
+            ]);
+        }
+
+        //On met à jour l'order avec le total correct
+        $order->update([
+            'total'=>$total
+        ]);
+
+        //On retire le panier de la session
+        session()->forget('cart');
+
+        return view('/basket/payment', compact('cart', 'products', 'order'));
     }
 }
