@@ -95,7 +95,8 @@ class BackofficeController extends Controller
         ]);
         $product = Product::findOrFail($id);
         $product->update($validated);
-        return redirect()->route('backoffice.products.show', $id)
+        return redirect()
+        ->route('backoffice.products.index', $product-> $id)
         ->with('success', 'Produit modifié.');
     }
 
@@ -103,7 +104,8 @@ class BackofficeController extends Controller
     public function destroy(string $id)
     {
         Product:: destroy($id);
-        return redirect()->route('backoffice.products.index')->with('succes', 'Produit supprimé.');
+        return redirect()->route('backoffice.products.index')
+        ->with('succes', 'Produit supprimé.');
     }
     
 }

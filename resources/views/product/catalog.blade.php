@@ -5,8 +5,12 @@
     <h1 class="text-center mb-4">Catalogue de Produ+-its</h1>
 
     <div class="row">
+      
+    
+
 
         @foreach ($products as $product)
+            @if ($product -> quantity_stock  > 0 )
         <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="/pictures/exemple.jpg" class="card-img-top" alt="{{ $product -> name }}">
@@ -18,7 +22,9 @@
                 </div>
             </div>
         </div>
+            @endif
         @endforeach
+        
 
     </div>
 </div>
