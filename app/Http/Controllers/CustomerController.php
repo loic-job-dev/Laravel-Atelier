@@ -56,7 +56,6 @@ class CustomerController extends Controller
         // redirect()->back()->with('success', 'Client enregistré avec succès.');
         //view ('/basket/confirm', ['customer' => $customer]);
 
-        //accéder au client connecté : auth('customer')->user()->first_name (ou id par exemple)
     }
 
 }

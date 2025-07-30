@@ -24,17 +24,21 @@ class ProductController extends Controller
 
         $products = $query->get();
 
-        return view('/product/catalog', compact('products'));
+        return response()-> view('/product/catalog', compact('products'), 200);
     }
 
     public function show(int $id): View
     {
-        $products = Product::where('id', $id)->get();
+        $product = Product::where('id', $id)->first();
+
+        if (!$product) {
+            abort(404, 'Produit non trouvé.');
+        }
 
         return view('/product/product-details', [
             'id' => $id,
-            'price' => number_format($products[0]->price_large / 100, 2, ',', ' '),
-            'product' => $products[0]
+            'price' => number_format($product->price_large / 100, 2, ',', ' '),
+            'product' => $product
         ]);
     }
 

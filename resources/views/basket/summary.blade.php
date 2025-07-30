@@ -37,14 +37,25 @@
             </tbody>
         </table>
     @endif
-<h3>Vos informations personnelles</h3>
-<p>Nom : {{ auth('customer')->user()->last_name }}</p>
-<p>Prénom : {{ auth('customer')->user()->first_name }}</p>
-<p>Email : {{ auth('customer')->user()->email }}</p>
-<p>Adresse : {{ auth('customer')->user()->adress->address }}</p>
-<p>Code postal : {{ auth('customer')->user()->adress->zip_code }}</p>
-<p>Ville : {{ auth('customer')->user()->adress->city }}</p>
-    <a href="{{ url('/cart/informations')}}" class="btn btn-custom px-4 py-2 m-3">Passer la commande</a>
+<h3 class="mb-3">Vos informations personnelles</h3>
+
+<div class="card shadow-sm border-0 mb-4" style="background-color: #fffdf4;">
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <p><strong>Nom :</strong> {{ auth('customer')->user()->last_name }}</p>
+                <p><strong>Prénom :</strong> {{ auth('customer')->user()->first_name }}</p>
+                <p><strong>Email :</strong> {{ auth('customer')->user()->email }}</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Adresse :</strong> {{ auth('customer')->user()->adress->address }}</p>
+                <p><strong>Code postal :</strong> {{ auth('customer')->user()->adress->zip_code }}</p>
+                <p><strong>Ville :</strong> {{ auth('customer')->user()->adress->city }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <a href="{{ url('/cart/informations')}}" class="btn btn-custom px-4 py-2 m-3">Payer</a>
 </div>
 @endauth
 
