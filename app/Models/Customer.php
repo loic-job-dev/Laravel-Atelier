@@ -10,8 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Customer extends Model
-{
+class Customer extends Authenticatable {
+
+    use HasFactory, Notifiable;
     public $timestamps = false;
     protected $table = 'customers';
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,8 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Produit ajouté au panier.');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
 
         $product = Product::find($id);
 
@@ -56,12 +58,23 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Produit supprimé avec succès.');
     }
 
-    public function informations() {
-        $products = Product::all()->keyBy('id');
+    public function informations()
+    {
+        if (Auth::guard('customer')->check()) {
+            return redirect()->route('cart.summary');
+        }
 
+        $products = Product::all()->keyBy('id');
         $cart = session()->get('cart', []);
 
-        
         return view('/basket/informations', compact('cart', 'products'));
+    }
+
+    public function summary()
+    {
+        $products = Product::all()->keyBy('id');
+        $cart = session()->get('cart', []);
+
+        return view('/basket/summary', compact('cart', 'products'));
     }
 }
