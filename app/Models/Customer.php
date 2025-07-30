@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,8 +46,8 @@ class Customer extends Model
     }
 
 
-    public function adress(): BelongsTo {
-        return $this->belongsTo(Adress::class);
+    public function adress(): HasOne {
+        return $this->hasOne(Address::class);
     }
 
     public function orders(): HasMany {

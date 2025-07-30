@@ -40,7 +40,7 @@ Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delet
 
 Route::get('/cart/informations', [CartController::class, 'informations'])->name('cart.informations');
 
-Route::post('/informations', [CustomerController::class, 'store'])->name('customer.store');
+Route::post('/informations', [CustomerController::class, 'create'])->name('customer.create');
 
 
 

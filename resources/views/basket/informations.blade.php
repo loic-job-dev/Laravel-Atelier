@@ -14,8 +14,10 @@
         </div>
     @endif
 
-    <form action="{{ route('customer.store') }}" method="POST">
+    <form action="{{ route('customer.create') }}" method="POST">
         @csrf
+
+        <h2>Votre identité</h2>
 
         <div class="mb-3">
             <label for="first_name" class="form-label">Prénom</label>
@@ -42,7 +44,29 @@
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
         </div>
 
-        <button type="submit" class="btn btn-custom">Enregistrer</button>
+        <h2>Votre adresse</h2>
+
+        <div class="mb-3">
+            <label for="zip_code" class="form-label">Code postal</label>
+            <input type="number" class="form-control" id="zip_code" name="zip_code" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="city" class="form-label">Ville</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Adresse</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+
+        <button type="submit" class="btn btn-custom">Enregistrer et payer</button>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </form>
 </div>
 @endsection
