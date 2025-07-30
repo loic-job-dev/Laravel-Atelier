@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->insert([
+        $products = [
             [
                 'name' => 'Douce Obsession.',
                 'price_small' => 10999,
@@ -133,7 +133,13 @@ class ProductSeeder extends Seeder
                 'history' => 'Née d’une randonnée solitaire dans une nature brute, Brume sauvage évoque l’instinct, la liberté, le contact direct avec les éléments. Un parfum pour les esprits indomptables.',
                 'ingredients' => 'ALCOHOL DENAT., PARFUM, AQUA, LIMONENE, LINALOOL, CITRAL, COUMARIN, EVERNYL, ISOEUGENOL',
             ],
-        ]);
+        ];
+        
+        foreach ($products as $product) {
+            DB::table('products')->updateOrInsert(
+                ['name' => $product['name']],
+                $product
+            );
+        }
     }
 }
-
