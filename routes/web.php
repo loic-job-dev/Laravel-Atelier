@@ -42,6 +42,8 @@ Route::get('/cart/informations', [CartController::class, 'informations'])->name(
 
 Route::post('/informations', [CustomerController::class, 'create'])->name('customer.create');
 
+Route::get ('/cart/summary', [CartController::class, 'summary'])->name('cart.summary');
+
 
 
 // Routes pour le backoffice

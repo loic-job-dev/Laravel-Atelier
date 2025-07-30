@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Address;
@@ -10,6 +11,12 @@ class CustomerController extends Controller
 {
     public function create(Request $request)
     {
+        //Si l'utilisateur est déjà conecté
+        if (Auth::guard('customer')->check()) {
+            return redirect()->route('cart.summary');
+        }
+
+        //Sinon on crée un compte
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name'  => 'required|string|max:255',
@@ -20,7 +27,7 @@ class CustomerController extends Controller
             'address'    => 'required|string'
         ], [
             'email' => 'L\'email doit être valide',
-            'passowrd.min' => 'Le mot de passe doit faire 8 caractères minimum',
+            'password.min' => 'Le mot de passe doit faire 8 caractères minimum',
             'password.confirmed' => 'Mots de passe différents',
             'zip_code.min' => 'Format de code postal invalide',
             'zip_code.max' => 'Format de code postal invalide'
@@ -38,6 +45,18 @@ class CustomerController extends Controller
 
         $customer->adress()->create($addressData);
 
-        return redirect()->back()->with('success', 'Client enregistré avec succès.');
+        $oldCart = session()->get('cart');
+
+        Auth::guard('customer')->login($customer);
+
+        session()->put('cart', $oldCart);
+
+        return redirect()->route('cart.summary');
+        // redirect()->route('cart.confirm');
+        // redirect()->back()->with('success', 'Client enregistré avec succès.');
+        //view ('/basket/confirm', ['customer' => $customer]);
+
+        //accéder au client connecté : auth('customer')->user()->first_name (ou id par exemple)
     }
+
 }
