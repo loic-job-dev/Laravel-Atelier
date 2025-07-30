@@ -13,27 +13,43 @@
         </div>
     @else
     <h3>Vos produits</h3>
-        <table class="table table-bordered table-striped align-middle table-custom">
-            <thead class="text-center">
+                <table class="table table-bordered table-striped align-middle table-custom">
+            <thead class="table-light text-center">
                 <tr>
-                    <th scope="col">Produit</th>
-                    <th scope="col">Quantité</th>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Sous-total</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $total = 0;
+                    $shipping_cost = 15.90;
+                @endphp
                 @foreach ($cart as $productId => $quantity)
-                    @php $product = $products[$productId] ?? null; @endphp
-                    @if ($product)
+                    @php
+                        $product = $products[$productId];
+                        $unit_price = $product->price_large / 100;
+                        $subtotal = $unit_price * $quantity;
+                        $total += $subtotal;
+                    @endphp
                     <tr>
                         <td>{{ $product->name }}</td>
-                        <td>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="ms-2">{{ $quantity }}</span>
-                            </div>
-                        </td>
+                        <td class="text-center">{{ $quantity }}</td>
+                        <td>{{ number_format($unit_price, 2, ',', ' ') }} €</td>
+                        <td>{{ number_format($subtotal, 2, ',', ' ') }} €</td>
                     </tr>
-                    @endif
                 @endforeach
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Frais de port</strong></td>
+                    <td>{{ number_format($shipping_cost, 2, ',', ' ') }} €</td>
+                    @php $total += $shipping_cost; @endphp
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Total à payer</strong></td>
+                    <td><strong>{{ number_format($total, 2, ',', ' ') }} €</strong></td>
+                </tr>
             </tbody>
         </table>
     @endif
@@ -55,7 +71,7 @@
         </div>
     </div>
 </div>
-    <a href="{{ url('/cart/informations')}}" class="btn btn-custom px-4 py-2 m-3">Payer</a>
+    <a href="{{ url('/cart/payment')}}" class="btn btn-custom px-4 py-2 m-3">Payer</a>
 </div>
 @endauth
 
