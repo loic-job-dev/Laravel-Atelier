@@ -75,6 +75,11 @@ class CartController extends Controller
         $products = Product::all()->keyBy('id');
         $cart = session()->get('cart', []);
 
+        if (!Auth::guard('customer')->check()) {
+            return view('/basket/informations', compact('cart', 'products'));
+        }
+
+
         return view('/basket/summary', compact('cart', 'products'));
     }
 }
