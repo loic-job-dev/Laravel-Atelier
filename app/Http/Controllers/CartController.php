@@ -79,7 +79,6 @@ class CartController extends Controller
             return view('/basket/informations', compact('cart', 'products'));
         }
 
-
         return view('/basket/summary', compact('cart', 'products'));
     }
 }

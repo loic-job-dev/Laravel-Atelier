@@ -78,7 +78,15 @@ table.table-custom > thead > tr > th {
     border-color: rgba(255, 231, 135, 1);
 }
 
+.card {
+    border-radius: 1rem;
+}
 
+.card p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #390050;
+}
 
 @media (max-width: 768px) {
     header nav {
