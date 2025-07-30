@@ -14,3 +14,4 @@
   <!-- Retour à la liste des produits -->
   <a href="{{ route('backoffice.products.index') }}" class="btn btn-link">← Retour à la liste</a>
 
+@endsection

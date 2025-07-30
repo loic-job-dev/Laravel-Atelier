@@ -19,16 +19,38 @@ class BackofficeController extends Controller
      */
     public function create()
     {
-        //
+    // pas de $product à passer ici
+    return view('backoffice.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $data = $request->validate([
+        'name'           => 'required|string|max:255',
+        'description'    => 'required|string',
+        'price_small'    => 'required|integer|min:0',
+        'price_large'    => 'required|integer|min:0',
+        'quantity_stock' => 'required|integer|min:0',
+        'category_id'    => 'required|integer',
+        'head_notes'     => 'required|string',
+        'heart_notes'    => 'required|string',
+        'deep_notes'     => 'required|string',
+        'intensity'      => 'required|string',
+        'track'          => 'required|string',
+        'history'        => 'required|string',
+        'ingredients'    => 'required|string',
+    ]);
+    // Crée le produit en base
+    Product::create($data);
+
+    // Redirige vers la liste avec un message
+    return redirect()
+        ->route('backoffice.products.index')
+        ->with('success', 'Produit créé avec succès.');
+}
 
     /**
      * Display the specified resource.
@@ -61,17 +83,27 @@ class BackofficeController extends Controller
             'price_large' => 'required|numeric',
             'description' => 'nullable|string',
             'quantity_stock' => 'required|numeric',
+            'category_id' => 'required|numeric',
+            'head_notes' => 'required|string',
+            'heart_notes' => 'required|string',
+            'deep_notes' => 'required|string',
+            'intensity' => 'required|string',
+            'track' => 'required|string',
+            'history' => 'required|string',
+            'ingredients' => 'required|string',
+
         ]);
         $product = Product::findOrFail($id);
         $product->update($validated);
-        return redirect()->route('backoffice.products.index', $id)->with('success', 'Produit modifié.');
+        return redirect()->route('backoffice.products.show', $id)
+        ->with('success', 'Produit modifié.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        Product:: destroy($id);
+        return redirect()->route('backoffice.products.index')->with('succes', 'Produit supprimé.');
     }
+    
 }

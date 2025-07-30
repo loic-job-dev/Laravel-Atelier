@@ -1,5 +1,12 @@
 @extends('components.layout')
 @section('content')
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Liste des produits</h1>
+    <a href="{{ route('backoffice.products.create') }}" 
+       class="btn btn-sm btn-success">
+      + Créer un produit
+    </a>
+  </div>
 <h1 class = "text-center">Liste des produits</h1>
 <table class="table table-striped">
     <thead>
@@ -16,7 +23,14 @@
                 <a href="{{ route('backoffice.products.show', $product->id) }}" class="btn btn-info btn-sm">Détails</a>
             </td>
             <td>
-                <form action="" method="post"></form>
+                <form action="{{ route ('backoffice.products.destroy' , $product->id) }}" method="post"
+                onsubmit="return confirm('Vraiment supprimer ce produit ?')">
+
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger">
+            Supprimer
+            </button>
             </td>
         </tr>
     @endforeach
