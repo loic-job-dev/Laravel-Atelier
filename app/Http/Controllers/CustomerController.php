@@ -26,7 +26,8 @@ class CustomerController extends Controller
             'city'       => 'required|string',
             'address'    => 'required|string'
         ], [
-            'email' => 'L\'email doit être valide',
+            'email.email' => 'L\'email doit être valide',
+            'email.unique' => 'L\'email existe déjà',
             'password.min' => 'Le mot de passe doit faire 8 caractères minimum',
             'password.confirmed' => 'Mots de passe différents',
             'zip_code.min' => 'Format de code postal invalide',
