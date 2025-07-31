@@ -10,8 +10,8 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
-        'price_small' =>'required|integer|min:0',
-        'price_large' =>'required|integer|min:0',
+        'price_small', 
+        'price_large',
         'quantity_stock',
         'category_id',
         'head_notes',

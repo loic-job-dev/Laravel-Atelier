@@ -79,11 +79,11 @@ class BackofficeController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'price_small' => 'required|numeric',
-            'price_large' => 'required|numeric',
+            'price_small' => 'required|numeric|min:1',
+            'price_large' => 'required|numeric|min:1',
             'description' => 'nullable|string',
             'quantity_stock' => 'required|numeric',
-            'category_id' => 'required|numeric',
+            'category_id' => 'required|numeric|min:1|max:2',
             'head_notes' => 'required|string',
             'heart_notes' => 'required|string',
             'deep_notes' => 'required|string',
@@ -91,7 +91,12 @@ class BackofficeController extends Controller
             'track' => 'required|string',
             'history' => 'required|string',
             'ingredients' => 'required|string',
+            
 
+        ], [
+            'price_small.min'    => 'Le prix petit format doit être supérieur à 1.',
+            'price_large.min'    => 'Le prix grand format doit être supérieur à 5.',
+            'quantity_stock.min' => 'La quantité en stock ne peut être négative.',
         ]);
         $product = Product::findOrFail($id);
         $product->update($validated);
