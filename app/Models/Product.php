@@ -30,6 +30,17 @@ class Product extends Model
         'price_small' => 'integer',
     ];
 
+    protected $hidden = [
+        'id',
+        'picture_main',
+        'picture_bis',
+        'quantity_stock',
+        'category_id',
+        'head_notes_picture',
+        'heart_notes_picture',
+        'deep_notes_picture',
+    ];
+
         public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
