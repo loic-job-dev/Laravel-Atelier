@@ -22,7 +22,7 @@ class CustomerController extends Controller
             'last_name'  => 'required|string|max:255',
             'email'      => 'required|email|unique:customers,email',
             'password'   => 'required|string|min:8|confirmed',
-            'zip_code'   => 'required|integer|min:11111|max:99999',
+            'zip_code'   => 'required|integer|min:01000|max:99999',
             'city'       => 'required|string',
             'address'    => 'required|string'
         ], [
