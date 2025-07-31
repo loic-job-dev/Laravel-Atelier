@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ParfumController extends Controller
 {
@@ -21,7 +22,30 @@ class ParfumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price_large' => 'required|numeric|min:1',
+            'price_small' => 'required|numeric|min:1',
+            'description' => 'required|string',
+            'quantity_stock'  => 'required|numeric|min:0',
+            'category_id'  => 'required|numeric|min:1|max:2',
+            'head_notes' => 'required|string|max:255',
+            'heart_notes' => 'required|string|max:255',
+            'deep_notes' => 'required|string|max:255',
+            'intensity' => 'required|string|max:255',
+            'track' => 'required|string|max:255',
+            'history' => 'required|string',
+            'ingredients' => 'required|string',
+            // autres règles ici si nécessaire
+        ]);
+
+        $product = Product::create($validated);
+
+        return response()->json([
+            'message' => 'Produit créé avec succès.',
+            'product' => $product
+        ], 201);
     }
 
     /**
@@ -45,6 +69,7 @@ class ParfumController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
     }
 }
