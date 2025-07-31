@@ -19,6 +19,7 @@
             <td>{{ $product->name }}</td>
             <td>{{ $product->price_small }}</td>
             <td>{{ $product->quantity_stock}}</td>
+            <td>{{ $product->category_id}}</td>
             <td>
                 <a href="{{ route('backoffice.products.show', $product->id) }}" class="btn btn-info btn-sm">Détails</a>
             </td>

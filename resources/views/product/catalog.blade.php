@@ -2,7 +2,7 @@
 
 @section("content")
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Catalogue de Produ+-its</h1>
+    <h1 class="text-center mb-4">Catalogue de Produits</h1>
 
     <div class="row">
       
@@ -18,6 +18,11 @@
                     <h5 class="card-title">{{ $product -> name }}</h5>
                     <p class="card-text">{{ $product -> description }}</p>
                     <p><strong>Prix : {{ number_format($product -> price_large / 100, 2, ',', ' ')}} €</strong></p>
+                    <p>Catégorie : {{ $product -> category -> password}}</p>
+                    <p>Catégorie : {{ $product -> category_id}}</p>
+                    <p>Catégorie : {{ $product -> category -> id}}</p>
+                    <p>Catégorie : {{ $product -> category -> name}}</p>
+
                     <a href="/product/{{ $product -> id }}" class="btn btn-primary">Voir le produit</a>
                 </div>
             </div>
