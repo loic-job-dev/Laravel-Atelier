@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('customer.create') }}" method="POST">
+    <form action="{{ route('user.create') }}" method="POST">
         @csrf
 
         <h2>Votre identité</h2>

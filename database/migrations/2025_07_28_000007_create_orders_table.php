@@ -16,7 +16,7 @@ return new class extends Migration
             $table->dateTime('date_hour');
             $table->integer('shipping_cost');
             $table->integer('total');
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

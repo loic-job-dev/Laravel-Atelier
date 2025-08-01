@@ -1,15 +1,29 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BackofficeController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
 
 // Routes for product
 
@@ -40,7 +54,7 @@ Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delet
 
 Route::get('/cart/informations', [CartController::class, 'informations'])->name('cart.informations');
 
-Route::post('/informations', [CustomerController::class, 'create'])->name('customer.create');
+Route::post('/informations', [UserController::class, 'create'])->name('user.create');
 
 Route::get ('/cart/summary', [CartController::class, 'summary'])->name('cart.summary');
 

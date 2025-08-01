@@ -62,7 +62,7 @@ class CartController extends Controller
 
     public function informations()
     {
-        if (Auth::guard('customer')->check()) {
+        if (Auth::guard('user')->check()) {
             return redirect()->route('cart.summary');
         }
 
@@ -77,7 +77,7 @@ class CartController extends Controller
         $products = Product::all()->keyBy('id');
         $cart = session()->get('cart', []);
 
-        if (!Auth::guard('customer')->check()) {
+        if (!Auth::guard('user')->check()) {
             return view('/basket/informations', compact('cart', 'products'));
         }
 
@@ -88,14 +88,14 @@ class CartController extends Controller
     {
         $products = Product::all()->keyBy('id');
         $cart = session()->get('cart', []);
-        $customer = auth('customer')->user();
+        $user = auth('user')->user();
 
         //On crée un order
         $order = Order::create([
             'date_hour' => now(),
             'shipping_cost' => 1500,
             'total' => 0,
-            'customer_id' => $customer->id,
+            'user_id' => $user->id,
         ]);
 
         $total = 0;

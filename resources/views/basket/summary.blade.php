@@ -1,8 +1,8 @@
 @extends("/components/layout")
 @section("content")
 
-@auth('customer')
-    <h2>Bienvenue, {{ auth('customer')->user()->first_name }} !</h2>
+@auth('user')
+    <h2>Bienvenue, {{ auth('user')->user()->first_name }} !</h2>
 
     <div class="container my-5">
     <h1 class="mb-4">Récapitulatif de votre commande</h1>
@@ -59,14 +59,14 @@
     <div class="card-body">
         <div class="row mb-3">
             <div class="col-md-6">
-                <p><strong>Nom :</strong> {{ auth('customer')->user()->last_name }}</p>
-                <p><strong>Prénom :</strong> {{ auth('customer')->user()->first_name }}</p>
-                <p><strong>Email :</strong> {{ auth('customer')->user()->email }}</p>
+                <p><strong>Nom :</strong> {{ auth('user')->user()->last_name }}</p>
+                <p><strong>Prénom :</strong> {{ auth('user')->user()->first_name }}</p>
+                <p><strong>Email :</strong> {{ auth('user')->user()->email }}</p>
             </div>
             <div class="col-md-6">
-                <p><strong>Adresse :</strong> {{ auth('customer')->user()->adress->address }}</p>
-                <p><strong>Code postal :</strong> {{ auth('customer')->user()->adress->zip_code }}</p>
-                <p><strong>Ville :</strong> {{ auth('customer')->user()->adress->city }}</p>
+                <p><strong>Adresse :</strong> {{ auth('user')->user()->adress->address }}</p>
+                <p><strong>Code postal :</strong> {{ auth('user')->user()->adress->zip_code }}</p>
+                <p><strong>Ville :</strong> {{ auth('user')->user()->adress->city }}</p>
             </div>
         </div>
     </div>

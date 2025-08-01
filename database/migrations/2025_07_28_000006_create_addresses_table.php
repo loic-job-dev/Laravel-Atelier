@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('zip_code');
             $table->string('city');
             $table->string('address'); 
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 
