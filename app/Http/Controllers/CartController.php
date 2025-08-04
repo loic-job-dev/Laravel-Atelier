@@ -10,6 +10,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 
 class CartController extends Controller
 {
@@ -84,48 +86,91 @@ class CartController extends Controller
         return view('/basket/summary', compact('cart', 'products'));
     }
 
-    public function payment() 
-    {
+public function paymentForm()
+{
+    $products = Product::all()->keyBy('id');
+    $cart = session()->get('cart', []);
+    return view('basket.payment', compact('products', 'cart'));
+}
+
+public function startPayment(Request $request)
+{
+    $user = auth('user')->user();
+    $products = Product::all()->keyBy('id');
+    $cart = session()->get('cart', []);
+    
+    $total = 0;
+    foreach ($cart as $productId => $quantity) {
+        $product = $products[$productId];
+        $total += $product->price_large * $quantity;
+    }
+
+    $shipping = 1590;
+    $total += $shipping;
+
+    // Création customer Stripe si inexistant
+    if (!$user->hasStripeId()) {
+        $user->createAsStripeCustomer();
+    }
+
+    Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    $intent = PaymentIntent::create([
+        'amount' => $total,
+        'currency' => 'eur',
+        'customer' => $user->stripe_id,
+        'payment_method' => $request->payment_method,
+        'confirmation_method' => 'automatic',
+        'confirm' => true,
+        'return_url' => route('cart.payment.redirect'),
+    ]);
+
+    // redirection automatique si nécessaire
+    if ($intent->status === 'requires_action') {
+        return redirect()->away($intent->next_action->redirect_to_url->url);
+    }
+
+    // sinon, on traite immédiatement
+    return $this->finalizeOrder($cart, $products, $user, $total);
+}
+
+public function handleRedirect(Request $request)
+{
+    $paymentIntentId = $request->get('payment_intent');
+
+    Stripe::setApiKey(env('STRIPE_SECRET'));
+    $intent = PaymentIntent::retrieve($paymentIntentId);
+
+    if ($intent->status === 'succeeded') {
+        $user = auth('user')->user();
         $products = Product::all()->keyBy('id');
         $cart = session()->get('cart', []);
-        $user = auth('user')->user();
-
-        //On crée un order
-        $order = Order::create([
-            'date_hour' => now(),
-            'shipping_cost' => 1500,
-            'total' => 0,
-            'user_id' => $user->id,
-        ]);
-
-        $total = 0;
-
-        foreach ($cart as $productId => $quantity) {
-            //Avoir le nom du produit
-            //echo ( $products[$productId]->name) . ' x ';
-            //Avoir sa quantité commandée
-            //echo ($quantity) . 'unité(s)' ;
-
-            //Création de variables
-            $product = $products[$productId];
-            $subtotal = $product->price_large * $quantity;
-            $total += $subtotal;
-            //On crée un OrderProduct par produit
-            $orderproduct = OrderProduct::create([
-                'order_id' => $order->id,
-                'product_id' => $product->id,
-                'quantity' => $quantity,
-            ]);
-        }
-
-        //On met à jour l'order avec le total correct
-        $order->update([
-            'total'=>$total
-        ]);
-
-        //On retire le panier de la session
-        session()->forget('cart');
-
-        return view('/basket/payment', compact('cart', 'products', 'order'));
+        $total = $intent->amount;
+        return $this->finalizeOrder($cart, $products, $user, $total);
     }
+
+    return view('basket.payment_error', ['status' => $intent->status]);
+}
+
+private function finalizeOrder($cart, $products, $user, $total)
+{
+    $order = Order::create([
+        'date_hour' => now(),
+        'shipping_cost' => 1500,
+        'total' => $total,
+        'user_id' => $user->id,
+    ]);
+
+    foreach ($cart as $productId => $quantity) {
+        OrderProduct::create([
+            'order_id' => $order->id,
+            'product_id' => $productId,
+            'quantity' => $quantity,
+        ]);
+    }
+
+    session()->forget('cart');
+
+    return view('basket.payment_success', compact('order'));
+}
 }

@@ -58,8 +58,9 @@ Route::post('/informations', [UserController::class, 'create'])->name('user.crea
 
 Route::get ('/cart/summary', [CartController::class, 'summary'])->name('cart.summary');
 
-Route::get ('/cart/payment', [CartController::class, 'payment'])->name('cart.payment');
-
+Route::get('/cart/payment', [CartController::class, 'paymentForm'])->name('cart.payment.form');
+Route::post('/cart/payment', [CartController::class, 'startPayment'])->name('cart.payment');
+Route::get('/cart/payment/redirect', [CartController::class, 'handleRedirect'])->name('cart.payment.redirect');
 
 
 // Routes pour le backoffice

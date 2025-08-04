@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&display=swap" rel="stylesheet">
 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
